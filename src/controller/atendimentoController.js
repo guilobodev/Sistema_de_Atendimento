@@ -12,10 +12,30 @@ export const CreateAtendimento = async (req, res) => {
 };
 export const getAtendimentos = async (req, res) => {
   try {
-    const todosAtendimentos = await Atendimento.findAll();
+    const todosAtendimentos = await Atendimento.findAll({
+      include: [
+        {
+          model: sequelize.models.User,
+          as: "user",
+          attributes: ["nome"],
+        },
+        {
+          model: sequelize.models.Service,
+          as: "service",
+          attributes: ["nome"],
+        },
+        {
+          model: sequelize.models.Canal,
+          as: "canal",
+          attributes: ["nome"],
+        },
+      ],
+    });
     res.status(200).json(todosAtendimentos);
   } catch (error) {
-    res.status(500).json("erro ao buscar os atendimentos, contate o responsável");
+    res
+      .status(500)
+      .json("erro ao buscar os atendimentos, contate o responsável");
     console.error("erro ao buscar: ", error);
   }
 };
@@ -27,7 +47,9 @@ export const putAtendimento = async (req, res) => {
     });
     res.status(200).json(update);
   } catch (error) {
-    res.status(500).json("erro ao atualizar atendimento, contate o responsável");
+    res
+      .status(500)
+      .json("erro ao atualizar atendimento, contate o responsável");
     console.error("erro ao atualizar: ", error);
   }
 };
