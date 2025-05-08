@@ -9,5 +9,10 @@ const User = sequelize.define('User', {
     username: {
       type: DataTypes.STRING
     },
-  });
+  },
+{
+    tableName: 'User',
+    timestamps: false
+});
   
+  export default Service
