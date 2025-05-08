@@ -46,7 +46,7 @@ git clone https://github.com/guilobodev/assistify.git
 Como iniciar o projeto
 
 ```bash
-cd nome-do-projeto
+cd assistify
 npm install
 npm start
 ```
