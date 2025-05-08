@@ -1,4 +1,4 @@
-import { DataTypes } from "sequelize";
+import sequelize from "../config/connection";
 
 
 
@@ -10,6 +10,13 @@ const Service = sequelize.define('Service', {
     },
     username: {
       type: DataTypes.STRING
-    },
-  });
+    }, 
+  },
+  {
+    tableName: 'Service',
+    timestamps: false
+  }
+);
   
+
+export default Service

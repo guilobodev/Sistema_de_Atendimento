@@ -1,20 +1,35 @@
-import express from "express"
-import cors from "cors"
-import dotenv from "dotenv"
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
 
-dotenv.config()
-const app = express()
+import sequelize from "./config/connection.js";
 
-app.use(cors())
-app.use(express.json())
+dotenv.config();
+const app = express();
 
-const port = 3000
+app.use(cors());
+app.use(express.json());
 
-app.get("/", (req,res) => {
-    res.send("funcionando")
+const port = 3000;
 
-})
+app.get("/", (req, res) => {
+  res.send("funcionando");
+});
 
-app.listen(port, function() {
-    console.log(`porta rodando na ${port}`)
-})
+async function startServer(params) {
+  try {
+    await sequelize.authenticate();
+
+
+    await sequelize.sync();
+
+    app.listen(port, function () {
+      console.log(`porta rodando na ${port}`);
+    });
+  } catch (error) {
+        console.error('Não foi possível se conectar ao banco de dados',  error)
+  }
+}
+
+
+startServer()
