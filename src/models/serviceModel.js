@@ -8,7 +8,7 @@ const Service = sequelize.define('Service', {
       primaryKey: true,
       autoIncrement: true
     },
-    username: {
+    nome: {
       type: DataTypes.STRING
     }, 
   },
