@@ -1,16 +1,20 @@
-import sequelize from "../config/connection";
+import sequelize from "../config/connection.js";
+import { DataTypes } from "sequelize";
 
-const Canal = sequelize.define('Canal', {
+const Atendimento = sequelize.define(
+  "atendimento",
+  {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
-      autoIncrement: true
-    }
-},
+      autoIncrement: true,
+    },
+  },
 
-{
-    tableName: 'Model',
-    timestamps: false
-});
-  
-  export default Service
+  {
+    tableName: "Atendimentos",
+    timestamps: false,
+  }
+);
+
+export default Atendimento;
