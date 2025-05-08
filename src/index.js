@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 
 import sequelize from "./config/connection.js";
 
+import  './models/serviceModel.js'
+
 dotenv.config();
 const app = express();
 
