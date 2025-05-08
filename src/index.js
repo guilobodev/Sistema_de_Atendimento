@@ -13,5 +13,5 @@ app.get("/", (req,res) => {
 })
 
 app.listen(port, function() {
-    console.log(``)
+    console.log(`porta rodando na ${port}`)
 })
