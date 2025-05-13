@@ -10,3 +10,13 @@ export const getCanal = async (req, res) => {
     console.error("erro ao buscar: ", error);
   }
 };
+
+export const createCanal = async (req, res) => {
+  try {
+    const newCanal = await Canal.create(req.body);
+    res.status(200).json(newCanal);
+  } catch (error) {
+    res.status(500).json("erro ao criar o canal");
+    console.error("erro: ", error);
+  }
+};

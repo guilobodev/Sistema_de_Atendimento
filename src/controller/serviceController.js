@@ -10,3 +10,13 @@ export const getService = async (req, res) => {
     console.error("erro ao buscar: ", error);
   }
 };
+
+export const createService = async (req, res) => {
+  try {
+    const newService = await Service.create(req.body);
+    res.status(200).json(newService);
+  } catch (error) {
+    res.status(500).json("erro ao criar serviço");
+    console.error("erro: ", error);
+  }
+};
