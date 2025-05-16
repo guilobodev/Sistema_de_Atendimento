@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
+import "./associations/associations.js"
+
 import sequelize from "./config/connection.js";
 
 import "./models/serviceModel.js";
@@ -14,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 app.get("/", (req, res) => {
   res.send("API rodando!");
@@ -34,4 +36,4 @@ async function startServer(params) {
   }
 }
 
-startServer();
+startServer()

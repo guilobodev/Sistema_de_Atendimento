@@ -1,5 +1,10 @@
 import sequelize from "../config/connection.js";
 import Atendimento from "../models/atendimentoModel.js";
+import User from "../models/userModel.js";
+import Service from "../models/serviceModel.js";
+import Canal from "../models/canalModel.js";
+
+
 
 export const CreateAtendimento = async (req, res) => {
   try {
@@ -13,19 +18,20 @@ export const CreateAtendimento = async (req, res) => {
 export const getAtendimentos = async (req, res) => {
   try {
     const todosAtendimentos = await Atendimento.findAll({
+      attributes: [],
       include: [
         {
-          model: sequelize.models.User,
+          model: User,
           as: "user",
           attributes: ["nome"],
         },
         {
-          model: sequelize.models.Service,
+          model: Service,
           as: "service",
           attributes: ["nome"],
         },
         {
-          model: sequelize.models.Canal,
+          model: Canal,
           as: "canal",
           attributes: ["nome"],
         },
