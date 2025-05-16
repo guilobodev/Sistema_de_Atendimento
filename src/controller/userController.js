@@ -23,3 +23,6 @@ export const createUser = async (req, res) => {
     console.error("erro: ", error);
   }
 };
+
+
+

@@ -3,7 +3,7 @@ import { createCanal, getCanal } from "../controller/canalController.js";
 
 const router = Router();
 
-router.get("/canal", getCanal);
-router.post("/canal", createCanal)
+router.get("/", getCanal);
+router.post("/", createCanal)
 
 export default router;

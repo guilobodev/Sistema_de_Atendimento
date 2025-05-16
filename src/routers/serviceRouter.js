@@ -3,7 +3,7 @@ import { createService, getService } from "../controller/serviceController.js";
 
 const router = Router();
 
-router.get("/service", getService);
-router.post("/service", createService)
+router.get("/", getService);
+router.post("/", createService)
 
 export default router;
