@@ -2,12 +2,12 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 
-import "./associations/associations.js"
+import "./src/associations/associations.js";
 
-import sequelize from "./config/connection.js";
+import sequelize from "./src/config/connection.js";
 
-import "./models/serviceModel.js";
-import router from "./routers/indexRouter.js";
+import "./src/models/serviceModel.js";
+import router from "./src/routers/indexRouter.js";
 
 dotenv.config();
 const app = express();
@@ -25,7 +25,6 @@ app.get("/", (req, res) => {
 async function startServer(params) {
   try {
     await sequelize.authenticate();
-
     await sequelize.sync();
 
     app.listen(port, function () {
@@ -36,4 +35,4 @@ async function startServer(params) {
   }
 }
 
-startServer()
+startServer();

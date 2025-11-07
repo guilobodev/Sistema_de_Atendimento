@@ -1,18 +1,18 @@
 import { Sequelize } from "sequelize";
-import dotenv from "dotenv";    
-dotenv.config()
+import dotenv from "dotenv";
+dotenv.config();
 
-
-const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD, {
+const sequelize = new Sequelize(
+  process.env.DATABASE,
+  process.env.USER,
+  process.env.PASSWORD,
+  {
     host: process.env.HOST,
     dialect: "mysql",
     port: process.env.PORT,
-    logging: console.log
+    logging: console.log,
+    timezone: "-03:00",
+  }
+);
 
-}
-)
-
-
-export default sequelize
-
-
+export default sequelize;

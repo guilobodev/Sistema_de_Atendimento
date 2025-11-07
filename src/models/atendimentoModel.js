@@ -1,10 +1,9 @@
 import sequelize from "../config/connection.js";
 import { DataTypes } from "sequelize";
 
-
 import Canal from "./canalModel.js";
 import Service from "./serviceModel.js";
-import User from "./userModel.js"
+import User from "./userModel.js";
 
 const Atendimento = sequelize.define(
   "atendimento",
@@ -14,33 +13,36 @@ const Atendimento = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    canalId : {
+    canalId: {
       type: DataTypes.INTEGER,
       references: {
         model: "Canal",
-        key: "id"
-      }
-
+        key: "id",
+      },
     },
     userId: {
       type: DataTypes.INTEGER,
       references: {
         model: "Usuarios",
-        key: "id"
-      }
+        key: "id",
+      },
     },
-    serviceId : {
+    serviceId: {
       type: DataTypes.INTEGER,
       references: {
         model: "Service",
-        key: "id"
-      }
-    }
+        key: "id",
+      },
+    },
+    observacoes: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
   },
 
   {
     tableName: "Atendimentos",
-    timestamps: false,
+    timestamps: true,
   }
 );
 
