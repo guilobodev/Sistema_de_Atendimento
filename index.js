@@ -16,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(router);
 
-const port = 3000;
+const port = 4500;
 
 app.get("/", (req, res) => {
   res.send("API rodando!");
@@ -25,9 +25,8 @@ app.get("/", (req, res) => {
 async function startServer(params) {
   try {
     await sequelize.authenticate();
-    await sequelize.sync();
 
-    app.listen(port, function () {
+    app.listen(port, "0.0.0.0", function () {
       console.log(`porta rodando na ${port}`);
     });
   } catch (error) {
